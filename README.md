@@ -13,6 +13,10 @@
 
 3. Go to http://0.0.0.0:3001/
 
-
+Below screenshot shows overview of training data set
 <img src="images/disaster-response-project1.png"
-     alt="Text" />
+     alt="1" />
+
+In this screenshot we can see the sample output screen
+<img src="images/disaster-response-project2.png"
+     alt="2" />
