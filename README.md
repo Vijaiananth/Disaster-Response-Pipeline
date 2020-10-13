@@ -1,6 +1,6 @@
 # Disaster Response Pipeline Project
 
-In this application I have analyzed disaster data from Figure Eight to build a model for an API that classifies disaster messages.
+In this application I have analyzed disaster data from [Figure Eight](https://www.figure-eight.com/) to build a model for an API that classifies disaster messages.
 
 In the Project Workspace, I got a data set containing real messages that were sent during disaster events. I have created a machine learning pipeline to categorize these events so that you can send the messages to an appropriate disaster relief agency.
 
@@ -28,4 +28,4 @@ In this screenshot we can see the sample output screen
      alt="2" />
 
 
-### Credits: Udacity, Figure 8 
+### Credits: [Udacity](https://www.udacity.com/), [Figure 8](https://www.figure-eight.com/)
