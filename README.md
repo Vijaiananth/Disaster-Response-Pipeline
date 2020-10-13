@@ -20,3 +20,6 @@ Below screenshot shows overview of training data set
 In this screenshot we can see the sample output screen
 <img src="images/disaster-response-project2.png"
      alt="2" />
+
+
+### Credits: Udacity, Figure 8 
