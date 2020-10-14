@@ -19,6 +19,16 @@ This project includes a web app where an emergency worker can input a new messag
 
 3. Go to http://0.0.0.0:3001/
 
+
+### Project Details
+
+This project has 4 folders:
+
+1. Data - This folder has the source CSV files and the python file which transforms the data and stores as sqllite db file.
+2. Models - This folder has the python file in which I have built the classifier model and stored the model as pickle file.
+3. Images - This folder has supporting images.
+4. App - This folder has the main python app 'run.py' which hosts the site and displays visuals and message classifier screen.
+
 Below screenshot shows overview of training data set
 <img src="images/disaster-response-project1.png"
      alt="1" />

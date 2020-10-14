@@ -3,7 +3,7 @@ import os
 import plotly
 import pandas as pd
 import nltk
-import nltk
+
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
@@ -58,7 +58,7 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 # load data
 engine = create_engine('sqlite:///../data/disasterresponse.db')
 #df = pd.read_sql_table('disasterresponse', engine)
-table_name = os.path.basename("../data/disasterresponse.db").replace(".db","") + "_table"
+table_name = os.path.basename("disasterresponse.db").replace(".db","") + "_table"
 df = pd.read_sql_table(table_name,engine)
 
 # load model
@@ -75,6 +75,15 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    # data for 2nd figure
+    categories = df.drop(columns = ['id', 'message', 'original', 'genre'])
+    label_cats = categories.columns.values
+    label_counts = categories.sum().values
+
+    # data for 3rd figure
+    rowsums = categories.sum(axis=1)
+    multilabel_counts = rowsums.value_counts().sort_index()
+    multi_labels, multi_label_counts = multilabel_counts.index, multilabel_counts.values
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -95,7 +104,44 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        },
+        {
+            'data': [
+                Bar(
+                    x=label_cats,
+                    y=label_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Labels',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Messages"
+                }
+            }
+        },
+    {
+     'data': [
+                Bar(
+                    x=multi_labels,
+                    y=multi_label_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Labels versus Messages',
+                'yaxis': {
+                    'title': "Number of Messages"
+                },
+                'xaxis': {
+                    'title': "Number of labels"
+                }
+            }
+
+    }
     ]
     
     # encode plotly graphs in JSON

@@ -41,6 +41,7 @@ def load_data(database_filepath):
     engine = create_engine('sqlite:///' + database_filepath)
     table_name = os.path.basename(database_filepath).replace(".db","") + "_table"
     df = pd.read_sql_table(table_name,engine)
+    print(table_name)
     #df = pd.read_sql("SELECT * FROM disasterresponse", engine)
     
     #Remove child alone field as it has all zero values only
@@ -133,10 +134,15 @@ def build_model():
             ('starting_verb_transformer', StartingVerbExtractor())
         ])),
 
-        ('classifier', MultiOutputClassifier(AdaBoostClassifier()))
+        ('clf', MultiOutputClassifier(AdaBoostClassifier()))
     ])
+    
+    parameters_grid = {'clf__estimator__learning_rate': [0.01, 0.02],
+              'clf__estimator__n_estimators': [10, 20, 40]}
 
-    return pipeline
+    cv = GridSearchCV(pipeline, param_grid=parameters_grid, scoring='f1_micro', n_jobs=-1)
+
+    return cv
 
 def evaluate_model(pipeline, X_test, Y_test, category_names):
     """
