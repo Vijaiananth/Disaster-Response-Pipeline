@@ -34,6 +34,8 @@ Download all the files and follow below sequence:
 1. Run the [ETL Pipeline Preparation.ipynb](https://github.com/Vijaiananth/Disaster-Response-Pipeline/blob/main/data/ETL%20Pipeline%20Preparation.ipynb) and you can see how the data is loaded and the list of transformations made and how the data is stored into sqllite db.
 2. Run the ML Pipeline [ML Pipeline Preparation.ipynb](https://github.com/Vijaiananth/Disaster-Response-Pipeline/blob/main/models/ML%20Pipeline%20Preparation.ipynb) and you can see the ML pipelines used and the scores of the different models. At the end the model will be stored as pickle file.
 3. Run [run.py](https://github.com/Vijaiananth/Disaster-Response-Pipeline/blob/main/app/run.py) which runs the hosted app and you can view the app in http://0.0.0.0:30.
+
+
 Below screenshot shows overview of training data set
 <img src="images/disaster-response-project1.png"
      alt="1" />
